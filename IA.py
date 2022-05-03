@@ -104,8 +104,9 @@ def createDistortionFrame(window):
     slider = [None for i in range(3)]
     for i, l in enumerate(sliderLabels):
         slider[i] = tk.Scale(distortionframe,  from_= 0, to = 100, resolution = 1, orient = tk.HORIZONTAL, 
-                        length = 500, width = 15, fg = colors[i], bg="black", label=names[i], bd=1, troughcolor=colors[i], 
+                        length = 500, width = 15, fg = colors[i], bg="black", label=names[i], bd=1, troughcolor=colors[i],
                         font=sliderFont, showvalue=0,  command=lambda event, label=l: label.config(text=str(event)))
+        slider[i].set(homeState[posNum][i+1] if homeState[posNum] else 0)
     for i, s in enumerate(slider): 
         s.grid(row=i+1, column=0, sticky=tk.EW)
         sliderLabels[i].grid(row=i+1, column=1, stick=tk.NSEW)
